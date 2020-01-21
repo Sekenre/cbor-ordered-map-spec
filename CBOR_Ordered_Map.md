@@ -45,7 +45,7 @@ encoding canonically.
 
 Given the following CBOR map data item, in CBOR diagnostic notation:
 
-    {'a': 1, 'b': 2}
+    {"a": 1, "b": 2}
 
 The equivalent value as an ordered map in CBOR diagnostic notation is
 
