@@ -10,7 +10,7 @@ This document specifies a tag for ordered maps in Concise Binary Object Represen
 
 ## Introduction
 
-In the python programming language, there is a dictionary type (OrderedDict [3]) which allows efficient access to key-value
+In the Python programming language, there is a dictionary type (OrderedDict [3]) which allows efficient access to key-value
 pairs in the order in which they are added. If these are encoded as major type 5 the order dependent information
 is lost, especially when serializing to a canonical format. Therefore an order-preserving tag should be used.
 
@@ -18,12 +18,12 @@ is lost, especially when serializing to a canonical format. Therefore an order-p
 
 Tag 272 can be applied to a CBOR array data item to indicate that it is an ordered map. Ordered Maps should be handled
 similarly to CBOR maps: an ordered map that has duplicate keys may be well-formed, but it is not valid. Like
-CBOR map keys, data items in an oredered map do not need to be of the same type.
+CBOR map keys, data items in an ordered map do not need to be of the same type.
 
 The number of items in the CBOR array data must be even. A missing value should raise a decoder error since CBOR supports
-an explicit null and undefined data items.
+both explicit null and undefined data items.
 
-The advice from the CBOR specification on map keys [4] also applies to ordered map keys:
+The advice from the CBOR specification on map keys [4] also applies to ordered map keys.
 
 The encoding and decoding applications need to agree on what types of items are going to be used in ordered maps.
 
