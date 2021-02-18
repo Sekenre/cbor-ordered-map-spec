@@ -14,7 +14,7 @@ In the Python programming language, there is a dictionary type (OrderedDict [3])
 pairs in the order in which they are added.
 JavaScript's Map [5] type has similar properties.
 If these are encoded as major type 5 the order dependent information
-is lost, especially when serializing to a canonical format. Therefore an order-preserving tag should be used.
+is lost, especially when serializing to a deterministic encoding [6]. Therefore an order-preserving tag should be used.
 
 ## Semantics
 
@@ -29,13 +29,13 @@ The advice from the CBOR specification on map keys [4] also applies to ordered m
 
 The encoding and decoding applications need to agree on what types of items are going to be used in ordered maps.
 
-Duplicate keys are may be ignored or considered an error by generic CBOR decoders [2].
+Duplicate keys may be ignored or considered an error by generic CBOR decoders [2].
 
 ## Rationale
 
 When encoding a Python OrderedDict or JavaScript Map type with CBOR it will usually be encoded in the same order as the dictionary was
 constructed. Unfortunately the decoder has no way of knowing this and will decode a map as a standard dictionary
-thus discarding any order information. Encoding as a standard map with Canonical encoding will also discard the original
+thus discarding any order information. Encoding as a standard map with Deterministic encoding [6] will also discard the original
 order of keys.
 
 ## Deterministic Encoding
