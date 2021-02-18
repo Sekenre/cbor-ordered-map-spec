@@ -29,7 +29,7 @@ The advice from the CBOR specification on map keys [4] also applies to ordered m
 
 The encoding and decoding applications need to agree on what types of items are going to be used in ordered maps.
 
-Duplicate keys are also prohibited by CBOR decoders that are using strict mode [2].
+Duplicate keys are may be ignored or considered an error by generic CBOR decoders [2].
 
 ## Rationale
 
@@ -38,10 +38,10 @@ constructed. Unfortunately the decoder has no way of knowing this and will decod
 thus discarding any order information. Encoding as a standard map with Canonical encoding will also discard the original
 order of keys.
 
-## Canonical CBOR
+## Deterministic Encoding
 
-Canonical encoding is handled in the same way as a CBOR array. Using this tag will prevent re-ordering the keys when
-encoding canonically.
+Deterministic encoding [6] is handled in the same way as a CBOR array. Using this tag will prevent re-ordering the keys when
+encoding.
 
 ## Examples
 
@@ -66,15 +66,17 @@ And its encoding is 0xd9011084616101616202:
 
 ## References
 
-[1] C. Bormann, and P. Hoffman. "Concise Binary Object Representation (CBOR)". RFC 7049, October 2013.
+[1] C. Bormann, and P. Hoffman. "Concise Binary Object Representation (CBOR)". RFC 8949, December 2020.
 
-[2] https://tools.ietf.org/html/rfc7049#section-3.10
+[2] https://tools.ietf.org/html/rfc8949#section-5.3.1
 
 [3] https://docs.python.org/3/library/collections.html#collections.OrderedDict
 
-[4] https://tools.ietf.org/html/rfc7049#section-3.7
+[4] https://tools.ietf.org/html/rfc8949#section-5.6
 
 [5] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
+
+[6] https://tools.ietf.org/html/rfc8949#section-4.2
 
 ## Authors
 
