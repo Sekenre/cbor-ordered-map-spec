@@ -2,7 +2,7 @@
 
 This document specifies a tag for ordered maps in Concise Binary Object Representation (CBOR) [1].
 
-    Tag: 272 (ordered map)
+    Tag: TBD279 (ordered map)
     Data item: array
     Semantics: Order-sensitive key-value mapping
     Reference: https://github.com/Sekenre/cbor-ordered-map-spec/blob/master/CBOR_Ordered_Map.md
@@ -11,12 +11,14 @@ This document specifies a tag for ordered maps in Concise Binary Object Represen
 ## Introduction
 
 In the Python programming language, there is a dictionary type (OrderedDict [3]) which allows efficient access to key-value
-pairs in the order in which they are added. If these are encoded as major type 5 the order dependent information
+pairs in the order in which they are added.
+JavaScript's Map [5] type has similar properties.
+If these are encoded as major type 5 the order dependent information
 is lost, especially when serializing to a canonical format. Therefore an order-preserving tag should be used.
 
 ## Semantics
 
-Tag 272 can be applied to a CBOR array data item to indicate that it is an ordered map. Ordered Maps should be handled
+Tag TBD279 can be applied to a CBOR array data item to indicate that it is an ordered map. Ordered Maps should be handled
 similarly to CBOR maps: an ordered map that has duplicate keys may be well-formed, but it is not valid. Like
 CBOR map keys, data items in an ordered map do not need to be of the same type.
 
@@ -31,7 +33,7 @@ Duplicate keys are also prohibited by CBOR decoders that are using strict mode [
 
 ## Rationale
 
-When encoding a Python OrderedDict type with CBOR it will usually be encoded in the same order as the dictionary was
+When encoding a Python OrderedDict or JavaScript Map type with CBOR it will usually be encoded in the same order as the dictionary was
 constructed. Unfortunately the decoder has no way of knowing this and will decode a map as a standard dictionary
 thus discarding any order information. Encoding as a standard map with Canonical encoding will also discard the original
 order of keys.
@@ -71,6 +73,8 @@ And its encoding is 0xd9011084616101616202:
 [3] https://docs.python.org/3/library/collections.html#collections.OrderedDict
 
 [4] https://tools.ietf.org/html/rfc7049#section-3.7
+
+[5] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
 
 ## Authors
 
