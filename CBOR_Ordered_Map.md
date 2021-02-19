@@ -79,3 +79,4 @@ And its encoding is 0xd9011084616101616202:
 ## Authors
 
 Kio Smallwood <kio.smallwood@flexitricity.com>
+Joe Hildebrand <joe-ietf@cursive.net>
